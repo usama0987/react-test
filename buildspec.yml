@@ -9,7 +9,10 @@ phases:
   build:  
     commands:  
       - npm run build  
+  post_build:  
+    commands:  
+      - aws s3 cp ./build s3://react-static-app-testing/ --recursive  
+
 artifacts:  
   files:  
-    - '**/*'  
-  base-directory: build
+    - '**/*'
